@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  bitpandaApiUrl: '',
+  bitpandaApiUrl: 'https://api.bitpanda.com/v1/masterdata',
 };
 
 /*
