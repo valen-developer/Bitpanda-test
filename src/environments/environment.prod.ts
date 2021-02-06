@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  bitpandaApiUrl: 'https://api.bitpanda.com/v1/masterdata',
 };
