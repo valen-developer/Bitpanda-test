@@ -19,6 +19,8 @@
 body {
   background-color: var(--background-color);
   color: var(--primary-text-color);
+  position: relative;
+  min-height: 100vh;
 }
 
 .btn {
@@ -43,4 +45,18 @@ body {
 
 .btn-secondary {
   background-color: var(--secondary-button-color);
+}
+
+/*Animations*/
+.fade-in {
+  animation-name: fade-in;
+  animation-duration: 0.5s;
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Commodity } from 'src/app/domain/commodity.model';
 import { Cryptocoin } from 'src/app/domain/cryptocoin.model';
 import { CommodityRepository } from 'src/app/services/repositories/commodity/commodity.service';
@@ -18,13 +19,19 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private cryptocoinRepository: CryptocoinRepository,
-    private commodityRepository: CommodityRepository
+    private commodityRepository: CommodityRepository,
+    private router: Router
   ) {
+    this.subscribeForData();
+  }
+
+  ngOnInit(): void {}
+
+  private subscribeForData(): void {
     this.cryptocoinRepository.itemsObservable.subscribe((items) => {
       if (items) {
         this.loadingCryptocoins = false;
         this.cryptocoins = items;
-        console.log(this.cryptocoins[0]);
       }
     });
     this.commodityRepository.itemsObservable.subscribe((items) => {
@@ -35,15 +42,14 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
-
-  public selectCoin(index: number): void {
-    if (this.cryptocoins.length > 0)
-      this.cryptocoinRepository.selectCoin(this.cryptocoins[index].id);
+  public navigateToCryptocoin(id: number): void {
+    this.router.navigate(['cryptocoin', id]);
+  }
+  public navigateToCommodity(id: number): void {
+    this.router.navigate(['commodity', id]);
   }
 
-  public selectCommodity(index: number): void {
-    if (this.cryptocoins.length > 0)
-      this.commodityRepository.selectCommodity(this.cryptocoins[index].id);
+  public navigateToBitPanda(): void {
+    window.location.href = 'https://www.bitpanda.com/en';
   }
 }

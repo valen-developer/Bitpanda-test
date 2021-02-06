@@ -9,7 +9,6 @@ import { BitpandaService } from '../../provider/bitpanda.service';
 })
 export class CryptocoinRepository {
   private cryptocoins: Cryptocoin[] = [];
-  private selectedCoin: Cryptocoin | null = null;
 
   public itemsObservable: BehaviorSubject<Cryptocoin[]>;
   public selectedCoinObservable: BehaviorSubject<Cryptocoin | null>;
@@ -22,18 +21,18 @@ export class CryptocoinRepository {
 
   private async getCryptocoins(): Promise<void> {
     this.cryptocoins = await this.bitPandaService.getCryptocoins();
-    console.log(this.cryptocoins);
     this.itemsObservable.next(this.cryptocoins);
   }
 
-  public selectCoin(id: number) {
+  public async selectCoin(id: number): Promise<Cryptocoin> {
+    if (this.cryptocoins.length == 0) await this.getCryptocoins();
+
     const found = this.cryptocoins.find((item) =>
       item.id === id ? item : null
     );
 
-    if (found) {
-      this.selectedCoin = found;
-      this.selectedCoinObservable.next(this.selectedCoin);
-    }
+    if (!found) throw new Error('not found');
+
+    return found;
   }
 }

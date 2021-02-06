@@ -1,14 +1,13 @@
-<div>
+<div class="fade-in">
   <header class="header">
     <h1 class="beat-animation">BitPanda</h1>
 
     <div class="presentation">
       <div class="presentation__motto">
-        <h2>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente,
-          illum.
-        </h2>
-        <button class="btn btn-primary">Go to BitPanda</button>
+        <h2>BitPanda helps you with your cryptocoins</h2>
+        <button class="btn btn-primary" (click)="navigateToBitPanda()">
+          Go to BitPanda
+        </button>
       </div>
 
       <div class="presentation__image-image"></div>
@@ -20,10 +19,12 @@
       <h1 class="title">Cryptocoins</h1>
       <hr />
 
+      <app-loading *ngIf="loadingCryptocoins"></app-loading>
       <div class="grid" *ngIf="!loadingCryptocoins">
         <div
           class="grid__item"
           *ngFor="let cryptocoin of cryptocoins; index as i"
+          (click)="navigateToCryptocoin(cryptocoin.id)"
         >
           <img
             [src]="cryptocoin.logoUrl"
@@ -39,10 +40,13 @@
       <h1 class="title">Commodities</h1>
       <hr />
 
+      <app-loading *ngIf="loadingCommodity"></app-loading>
+
       <div class="grid" *ngIf="!loadingCommodity">
         <div
           class="grid__item"
           *ngFor="let commodity of commodities; index as i"
+          (click)="navigateToCommodity(commodity.id)"
         >
           <img
             [src]="commodity.logoUrl"

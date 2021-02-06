@@ -1,0 +1,21 @@
+.not-found {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  height: 90vh;
+}
+.not-found > img {
+  width: 60%;
+}
+.link {
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: white;
+  margin-top: 2rem;
+}
+.link:hover {
+  color: var(--secondary-color);
+}

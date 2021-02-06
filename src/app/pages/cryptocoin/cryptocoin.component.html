@@ -1,1 +1,28 @@
-<p>cryptocoin works!</p>
+<div *ngIf="cryptocoin" [ngStyle]="setGradient()" class="container fade-in">
+  <div class="container__image" [ngStyle]="setLogoBoxShadow()">
+    <img [src]="cryptocoin.logoUrl" [alt]="cryptocoin.name" />
+  </div>
+
+  <div class="container__info">
+    <div class="container__info-item">
+      <p>
+        Name: <span>{{ cryptocoin.name | titlecase }}</span>
+      </p>
+    </div>
+    <div class="container__info-item">
+      <p>
+        Symbol: <span>{{ cryptocoin.symbol }}</span>
+      </p>
+    </div>
+    <div class="container__info-item">
+      <p>
+        Type: <span>{{ cryptocoin.type | titlecase }}</span>
+      </p>
+    </div>
+    <div class="container__info-item">
+      <p>
+        Change last 24h: <span>{{ cryptocoin.changeLast24h | number }}</span>
+      </p>
+    </div>
+  </div>
+</div>

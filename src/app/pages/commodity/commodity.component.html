@@ -1,1 +1,28 @@
-<p>commodity works!</p>
+<div *ngIf="commodity" [ngStyle]="setGradient()" class="container fade-in">
+  <div class="container__image" [ngStyle]="setLogoBoxShadow()">
+    <img [src]="commodity.logoUrl" [alt]="commodity.name" />
+  </div>
+
+  <div class="container__info">
+    <div class="container__info-item">
+      <p>
+        Name: <span>{{ commodity.name | titlecase }}</span>
+      </p>
+    </div>
+    <div class="container__info-item">
+      <p>
+        Symbol: <span>{{ commodity.symbol }}</span>
+      </p>
+    </div>
+    <div class="container__info-item">
+      <p>
+        Type: <span>{{ commodity.type | titlecase }}</span>
+      </p>
+    </div>
+    <div class="container__info-item">
+      <p>
+        Change last 24h: <span>{{ commodity.changeLast24h | number }}</span>
+      </p>
+    </div>
+  </div>
+</div>

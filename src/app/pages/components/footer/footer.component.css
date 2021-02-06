@@ -1,0 +1,10 @@
+.foot {
+  display: flex;
+  justify-content: center;
+  padding: 10px 0 0 1rem;
+  width: 100vw;
+}
+
+.foot_name {
+  font-weight: bold;
+}

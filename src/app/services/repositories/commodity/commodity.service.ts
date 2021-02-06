@@ -8,7 +8,6 @@ import { BitpandaService } from '../../provider/bitpanda.service';
 })
 export class CommodityRepository {
   private commodities: Commodity[] = [];
-  private selectedCommodity: Commodity | null = null;
 
   public itemsObservable: BehaviorSubject<Commodity[]>;
   public selectCommodityObservable: BehaviorSubject<Commodity | null>;
@@ -26,14 +25,15 @@ export class CommodityRepository {
     this.itemsObservable.next(this.commodities);
   }
 
-  public selectCommodity(id: number) {
+  public async selectCoin(id: number): Promise<Commodity> {
+    if (this.commodities.length == 0) await this.getCommodities();
+
     const found = this.commodities.find((item) =>
       item.id === id ? item : null
     );
 
-    if (found) {
-      this.selectedCommodity = found;
-      this.selectCommodityObservable.next(this.selectedCommodity);
-    }
+    if (!found) throw new Error('not found');
+
+    return found;
   }
 }
