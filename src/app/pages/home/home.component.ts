@@ -21,13 +21,14 @@ export class HomeComponent implements OnInit {
     private commodityRepository: CommodityRepository
   ) {
     this.cryptocoinRepository.itemsObservable.subscribe((items) => {
-      if (!items) {
+      if (items) {
         this.loadingCryptocoins = false;
         this.cryptocoins = items;
+        console.log(this.cryptocoins[0]);
       }
     });
     this.commodityRepository.itemsObservable.subscribe((items) => {
-      if (!items) {
+      if (items) {
         this.loadingCommodity = false;
         this.commodities = items;
       }

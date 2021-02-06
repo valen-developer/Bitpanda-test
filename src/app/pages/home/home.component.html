@@ -1,1 +1,57 @@
-<p>home works!</p>
+<div>
+  <header class="header">
+    <h1 class="beat-animation">BitPanda</h1>
+
+    <div class="presentation">
+      <div class="presentation__motto">
+        <h2>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente,
+          illum.
+        </h2>
+        <button class="btn btn-primary">Go to BitPanda</button>
+      </div>
+
+      <div class="presentation__image-image"></div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section">
+      <h1 class="title">Cryptocoins</h1>
+      <hr />
+
+      <div class="grid" *ngIf="!loadingCryptocoins">
+        <div
+          class="grid__item"
+          *ngFor="let cryptocoin of cryptocoins; index as i"
+        >
+          <img
+            [src]="cryptocoin.logoUrl"
+            [alt]="cryptocoin.name"
+            class="grid__item-logo"
+          />
+          <h4 class="grid__item-name">{{ cryptocoin.name }}</h4>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h1 class="title">Commodities</h1>
+      <hr />
+
+      <div class="grid" *ngIf="!loadingCommodity">
+        <div
+          class="grid__item"
+          *ngFor="let commodity of commodities; index as i"
+        >
+          <img
+            [src]="commodity.logoUrl"
+            [alt]="commodity.name"
+            class="grid__item-logo"
+          />
+          <h4 class="grid__item-name">{{ commodity.name }}</h4>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>

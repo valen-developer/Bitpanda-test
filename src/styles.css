@@ -1,1 +1,46 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+  --background-color: #3d1374;
+  --primary-color: #11d4f5;
+  --secondary-color: #170042;
+  --primary-text-color: #ffffff;
+  --secondary-text-color: #d6d6d6;
+
+  --primary-button-color: var(--primary-color);
+  --secondary-button-color: #cf4a99;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--primary-text-color);
+}
+
+.btn {
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 0.8rem;
+  height: max-content;
+  box-shadow: 0px 0px 10px var(--primary-color);
+  color: var(--primary-text-color);
+  font-weight: bold;
+  transition: 0.3s;
+}
+.btn:hover {
+  transform: translate3d(0, -3px, 0);
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+}
+
+.btn-secondary {
+  background-color: var(--secondary-button-color);
+}

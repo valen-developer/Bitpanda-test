@@ -22,6 +22,7 @@ export class CryptocoinRepository {
 
   private async getCryptocoins(): Promise<void> {
     this.cryptocoins = await this.bitPandaService.getCryptocoins();
+    console.log(this.cryptocoins);
     this.itemsObservable.next(this.cryptocoins);
   }
 
